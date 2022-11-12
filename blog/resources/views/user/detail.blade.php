@@ -1,5 +1,9 @@
 @extends('user.main')
 
+@section('title')
+    Content
+@endsection
+
 @section('content')
     <div class="h-full w-full">
         <!-- background -->

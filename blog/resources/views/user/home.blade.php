@@ -1,5 +1,9 @@
 @extends('user.main')
 
+@section('title')
+    Home Page
+@endsection
+
 @section('content')
     <!-- hero section -->
     <div class="bg-blue-200 h-[480px] md:h-[640px] w-full relative mb-[1rem] md:mb-0">
