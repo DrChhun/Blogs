@@ -9,16 +9,44 @@
 </head>
 <body>
 
-    <nav class="flex justify-between px-[1.5rem] py-[1rem] md:px-[3.5rem] md:py-[2rem]">
-        <h1 class="text-4xl font-bold">MEGA</h1>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <nav class="flex justify-between px-[1.5rem] py-[1rem] md:px-[3.5rem] md:py-[2rem] z-0">
+        <h1 id="mega" class="text-4xl font-bold"><a href="/home">MEGA</a></h1>
         <div>
             <ul class="hidden md:flex">
                 <li class="mr-[1rem]"><a href="#">Technology</a></li>
                 <li class="mr-[1rem]"><a href="#">Mobile</a></li>
                 <li><a href="#">Auto</a></li>
-            </ul>
+            </ul>   
+            <!-- hamburder icon -->
+            <div id="ham" class="ham w-[30px] h-[25px] flex flex-col justify-between md:hidden" >
+                <div class="w-full h-[5px] bg-black"></div>
+                <div class="w-full h-[5px] bg-black"></div>
+                <div class="w-full h-[5px] bg-black"></div>
+            </div>
+            <!-- cross icon -->
+            <div id="cross" class="cross mt-5 ham w-[30px] h-[25px] flex flex-col justify-between md:hidden relative hidden" >
+                <div class="w-full h-[5px] bg-black rotate-45"></div>
+                <div class="w-full h-[5px] bg-black rotate-[-45deg] absolute top-0"></div>
+            </div>
         </div>
     </nav>
+
+    <!-- mobile menu -->
+    <div id="menu" class="bg-white absolute top-0 h-screen z-[999] w-full sticky hidden">
+        <div id="free" class="flex justify-center h-screen">
+            <ul class="flex flex-col justify-center">
+                <a class="text-black text-4xl mb-[2rem]">HOME</a>
+                <a class="text-black text-4xl mb-[2rem]">HOME</a>
+                <a class="text-black text-4xl">HOME</a>
+            </ul>
+        </div>
+    </div>
 
     <section class="px-[1.5rem] py-[1rem] md:px-[3.5rem] md:py-[2rem]">
         @yield('content')
@@ -31,11 +59,11 @@
         <div class="md:w-[60%]">
             <div class="flex flex-col mb-[1rem]">
                 <label class="mb-[.5rem]">Email address</label>
-                <input placeholder="example@email.com" class="p-[1rem] border-2" type="email"></input>
+                <input placeholder="example@email.com" class="focus:outline-black p-[1rem] border-2" type="email"></input>
             </div>
             <div class="flex flex-col">
                 <label class="mb-[.5rem]">Message</label>
-                <input placeholder="Hello..." class="p-[1rem] border-2" type="text"></input>
+                <input placeholder="Hello..." class="focus:outline-black p-[1rem] border-2" type="text"></input>
             </div>
         </div>
     </section>
@@ -55,6 +83,29 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        let ham = document.getElementById("ham");
+        let cross = document.getElementById("cross");
+        let free = document.getElementById("free");
+
+        ham.addEventListener("click", () => {
+            ham.classList.toggle("hidden");
+            cross.classList.remove("hidden");
+            menu.classList.remove("hidden");
+        });
+
+        cross.addEventListener("click", () => {
+            cross.classList.toggle("hidden");
+            ham.classList.remove("hidden");
+            menu.classList.toggle("hidden");
+        })
+
+        free.addEventListener("click", ()=> {
+            menu.classList.toggle("hidden");
+        });
+
+    </script>
     
 </body>
 </html>
