@@ -57,14 +57,18 @@
             Get In Touch
         </div>
         <div class="md:w-[60%]">
-            <div class="flex flex-col mb-[1rem]">
-                <label class="mb-[.5rem]">Email address</label>
-                <input placeholder="example@email.com" class="focus:outline-black p-[1rem] border-2" type="email"></input>
-            </div>
-            <div class="flex flex-col">
-                <label class="mb-[.5rem]">Message</label>
-                <input placeholder="Hello..." class="focus:outline-black p-[1rem] border-2" type="text"></input>
-            </div>
+            <form action="/store" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="flex flex-col mb-[1rem]">
+                    <label class="mb-[.5rem]">Email address</label>
+                    <input name="email" placeholder="example@email.com" class="focus:outline-black p-[1rem] border-2" type="email"></input>
+                </div>
+                <div class="flex flex-col">
+                    <label class="mb-[.5rem]">Message</label>
+                    <input name="message" placeholder="Hello..." class="focus:outline-black p-[1rem] border-2" type="text"></input>
+                </div>
+                <button type="submit"></button>
+            </form>
         </div>
     </section>
 

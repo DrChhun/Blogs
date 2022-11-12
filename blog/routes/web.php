@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CollectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,4 @@ Route::get('/', function () {
 
 Route::get('/home', [UserController::class, "home"]);
 Route::get('/content', [UserController::class, "detail"]);
-
-Route::middleware('auth:main')->group(function() {
-    
-});
+Route::post('/store', [CollectController::class, "message"]);
