@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -35,6 +36,23 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+
+    protected function unauthenticated($request, AuthenticationException $exception) {
+        
+        $guard = $exception->guards()[0];
+
+        switch ($guard) {
+            case 'admin' :
+                $redirect = "admin_login";
+                break;
+            default: 
+                $redirect = "login";
+                break;
+        };
+
+        return redirect()->guest(route($redirect));
+
+    }
 
     /**
      * Register the exception handling callbacks for the application.

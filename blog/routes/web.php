@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,24 @@ Route::get('/', function () {
     return view('user.home');
 });
 
-Route::get('/home', [UserController::class, "home"]);
-Route::get('/content', [UserController::class, "detail"]);
+Route::get('/', [UserController::class, "home"]);
+Route::get('/content/{id}', [UserController::class, "detail"]);
 Route::post('/store', [CollectController::class, "message"]);
+
+
+Route::get('/post', [DashboardController::class, "post"]);
+Route::post('/posting', [ContentController::class, "posting"]);
+
+Route::prefix('admin')->group(function() {
+
+    Route::get('/login', [AdminController::class, "loginForm"])->name('login');
+    Route::post('/login', [AdminController::class, "login"]);
+    
+    Route::middleware('admin')->group(function () {
+        Route::get("/", [DashboardController::class, "overview"]);
+        Route::get('/dashboard', [DashboardController::class, "index"]);
+        Route::get('/overview', [DashboardController::class, "overview"]);
+        Route::get('/edit', [DashboardController::class, "editpage"]);
+    });
+
+});

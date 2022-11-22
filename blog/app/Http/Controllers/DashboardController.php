@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Content;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +13,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        return view('admin.dashboard');
     }
 
-    public function home() {
-        $post = Content::limit(4)->orderBy('id', 'desc')->get();
-        return view('user.home', compact('post'));
+    public function overview() {
+        return view('admin.overview');
     }
 
-    public function detail($id) {
-        $content = Content::where('id', $id)->get();
-        return view('user.detail', compact('content'));
+    public function post() {
+        return view('admin.post');
+    }
+
+    public function editpage() {
+        return view('admin.edit');
     }
 
     /**

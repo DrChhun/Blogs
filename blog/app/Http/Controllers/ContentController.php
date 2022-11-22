@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Content;
+use Illuminate\Support\File;
 
-class UserController extends Controller
+class ContentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +15,33 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        return redirect()->back();
     }
 
-    public function home() {
-        $post = Content::limit(4)->orderBy('id', 'desc')->get();
-        return view('user.home', compact('post'));
-    }
+    public function posting(Request $request) {
 
-    public function detail($id) {
-        $content = Content::where('id', $id)->get();
-        return view('user.detail', compact('content'));
+        $request->validate([
+            'title' => 'required',
+            'image1' => 'required',
+            'text1' => 'required',
+            'image2' => 'required',
+            'text2' => 'required'
+        ]);
+
+        // dd($request->image1);
+
+        $image1 = $request->image1->store('/public/image');
+        $image2 = $request->image2->store('/public/image');
+
+        Content::create([
+            'title' => $request->title,
+            'image1' => $image1,
+            'text1' => $request->text1,
+            'image2' => $image2,
+            'text2' => $request->text2
+        ]);
+
+        return redirect()->to('/')->with('message', "You have posted a new content!");
     }
 
     /**

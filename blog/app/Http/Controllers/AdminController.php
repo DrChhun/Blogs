@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Models\Content;
+use Auth;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +15,29 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
-    public function home() {
-        $post = Content::limit(4)->orderBy('id', 'desc')->get();
-        return view('user.home', compact('post'));
+    public function loginForm() {
+        return view('admin.login');
     }
 
-    public function detail($id) {
-        $content = Content::where('id', $id)->get();
-        return view('user.detail', compact('content'));
+    public function login(Request $request) {
+        // dd($request->all());
+        $pass = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if(Auth::guard('admin')->attempt($pass)) {
+
+            $request->session()->regenerate();
+
+            return redirect()->to('/main/overview');
+
+        }
+
+        return redirect()->to('/fail');
     }
 
     /**
@@ -51,10 +64,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Admin $admin)
     {
         //
     }
@@ -62,10 +75,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -74,10 +87,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -85,10 +98,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Admin $admin)
     {
         //
     }

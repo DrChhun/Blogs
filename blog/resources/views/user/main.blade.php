@@ -49,6 +49,7 @@
     </div>
 
     <section class="px-[1.5rem] py-[1rem] md:px-[3.5rem] md:py-[2rem]">
+        @include('alert')
         @yield('content')
     </section>
 
