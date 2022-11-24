@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class DashboardController extends Controller
 {
@@ -21,7 +22,8 @@ class DashboardController extends Controller
     }
 
     public function post() {
-        return view('admin.post');
+        $category = Category::all();
+        return view('admin.post', compact('category'));
     }
 
     public function editpage() {

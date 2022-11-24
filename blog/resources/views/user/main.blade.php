@@ -16,12 +16,12 @@
     </style>
 
     <nav class="flex justify-between px-[1.5rem] py-[1rem] md:px-[3.5rem] md:py-[2rem] z-0">
-        <h1 id="mega" class="text-4xl font-bold"><a href="/home">MEGA</a></h1>
+        <h1 id="mega" class="text-4xl font-bold"><a href="/">MEGA</a></h1>
         <div>
             <ul class="hidden md:flex">
-                <li class="mr-[1rem]"><a href="#">Technology</a></li>
-                <li class="mr-[1rem]"><a href="#">Mobile</a></li>
-                <li><a href="#">Auto</a></li>
+                <li class="mr-[1rem]"><a href="/cate/auto">Auto</a></li>
+                <li class="mr-[1rem]"><a href="/cate/mobile">Mobile</a></li>
+                <li><a href="/cate/tips">Tips</a></li>
             </ul>   
             <!-- hamburder icon -->
             <div id="ham" class="ham w-[30px] h-[25px] flex flex-col justify-between md:hidden" >
@@ -41,9 +41,9 @@
     <div id="menu" class="bg-white absolute top-0 h-screen z-[999] w-full sticky hidden">
         <div id="free" class="flex justify-center h-screen">
             <ul class="flex flex-col justify-center">
-                <a class="text-black text-4xl mb-[2rem]">HOME</a>
-                <a class="text-black text-4xl mb-[2rem]">HOME</a>
-                <a class="text-black text-4xl">HOME</a>
+                <a href="" class="text-black text-4xl mb-[2rem]">AUTO</a>
+                <a href="" class="text-black text-4xl mb-[2rem]">MOBILE</a>
+                <a href="" class="text-black text-4xl">TIPS</a>
             </ul>
         </div>
     </div>

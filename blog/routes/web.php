@@ -25,10 +25,15 @@ Route::get('/', function () {
 Route::get('/', [UserController::class, "home"]);
 Route::get('/content/{id}', [UserController::class, "detail"]);
 Route::post('/store', [CollectController::class, "message"]);
+Route::get('/cate/auto', [ContentController::class, "auto"]);
+Route::get('/cate/mobile', [ContentController::class, "mobile"]);
+Route::get('/cate/tips', [ContentController::class, "tips"]);
 
 
 Route::get('/post', [DashboardController::class, "post"]);
 Route::post('/posting', [ContentController::class, "posting"]);
+Route::get('/dashboard', [DashboardController::class, "index"]);
+Route::get('/edit', [DashboardController::class, "editpage"]);
 
 Route::prefix('admin')->group(function() {
 
@@ -37,9 +42,7 @@ Route::prefix('admin')->group(function() {
     
     Route::middleware('admin')->group(function () {
         Route::get("/", [DashboardController::class, "overview"]);
-        Route::get('/dashboard', [DashboardController::class, "index"]);
         Route::get('/overview', [DashboardController::class, "overview"]);
-        Route::get('/edit', [DashboardController::class, "editpage"]);
     });
 
 });
