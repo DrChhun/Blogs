@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="w-[100%] flex">
+    <div class="w-[100%] sticky top-0 flex">
         <div id="side" class="w-[20%] h-screen bg-gray-200 p-8 relative duration-200">
             <h1 class="mb-8">Admin</h1>
             <div class="flex flex-col">
@@ -21,7 +21,7 @@
         </div>
 
 
-        <div id="content" class="w-4/5 h-screen p-8">
+        <div id="content" class="w-4/5 h-screen px-8">
             @include('alert')
             @yield('content')
         </div>

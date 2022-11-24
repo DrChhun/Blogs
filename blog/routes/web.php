@@ -34,6 +34,7 @@ Route::get('/post', [DashboardController::class, "post"]);
 Route::post('/posting', [ContentController::class, "posting"]);
 Route::get('/dashboard', [DashboardController::class, "index"]);
 Route::get('/edit', [DashboardController::class, "editpage"]);
+Route::get('/delete/{id}', [DashboardController::class, "destroy"]);
 
 Route::prefix('admin')->group(function() {
 

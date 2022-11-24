@@ -19,9 +19,9 @@
         <h1 id="mega" class="text-4xl font-bold"><a href="/">MEGA</a></h1>
         <div>
             <ul class="hidden md:flex">
-                <li class="mr-[1rem]"><a href="/cate/auto">Auto</a></li>
-                <li class="mr-[1rem]"><a href="/cate/mobile">Mobile</a></li>
-                <li><a href="/cate/tips">Tips</a></li>
+                <li class="mr-[1rem] font-bold hover:text-blue-700 duration-250"><a class="duration-200 hover:border-t-4" href="/cate/auto">Auto</a></li>
+                <li class="mr-[1rem] font-bold hover:text-blue-700 duration-250"><a class="duration-200 hover:border-t-4" href="/cate/mobile">Mobile</a></li>
+                <li class="font-bold hover:text-blue-700 duration-250"><a class="duration-200 hover:border-t-4" href="/cate/tips">Tips</a></li>
             </ul>   
             <!-- hamburder icon -->
             <div id="ham" class="ham w-[30px] h-[25px] flex flex-col justify-between md:hidden" >
@@ -40,10 +40,10 @@
     <!-- mobile menu -->
     <div id="menu" class="bg-white absolute top-0 h-screen z-[999] w-full sticky hidden">
         <div id="free" class="flex justify-center h-screen">
-            <ul class="flex flex-col justify-center">
-                <a href="" class="text-black text-4xl mb-[2rem]">AUTO</a>
-                <a href="" class="text-black text-4xl mb-[2rem]">MOBILE</a>
-                <a href="" class="text-black text-4xl">TIPS</a>
+            <ul class="flex flex-col justify-center text-center">
+                <a href="/cate/auto" class="text-black text-4xl mb-[2rem] hover:underline duration-200">AUTO</a>
+                <a href="/cate/mobile" class="text-black text-4xl mb-[2rem] hover:underline">MOBILE</a>
+                <a href="/cate/tips" class="text-black text-4xl hover:underline">TIPS</a>
             </ul>
         </div>
     </div>

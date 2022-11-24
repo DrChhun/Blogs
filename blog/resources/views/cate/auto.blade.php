@@ -1,8 +1,8 @@
 @extends('user.main')
 
 @section('content')
-<h1 class="mb-[1rem] text-4xl font-bold">Auto All</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<h1 class="mt-[2.5rem] md:mt-0 mb-[1rem] text-4xl font-bold">Auto All</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-[3rem]">
             @foreach($auto as $auto)
             <div class="">
                 <a href="/content/{{$auto->id}}">

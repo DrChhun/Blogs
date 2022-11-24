@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Content;
 
 class DashboardController extends Controller
 {
@@ -18,16 +19,24 @@ class DashboardController extends Controller
     }
 
     public function overview() {
+
         return view('admin.overview');
+        
     }
 
     public function post() {
+
         $category = Category::all();
         return view('admin.post', compact('category'));
+
     }
 
     public function editpage() {
-        return view('admin.edit');
+
+        $controll = Content::all();
+        // dd($controll);
+        return view('admin.edit', compact('controll'));
+
     }
 
     /**
@@ -91,8 +100,12 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+
+        $delete = Content::where('id', $id)->get();
+
+        $delete->each->delete();
+
+        return redirect()->back();
     }
 }
